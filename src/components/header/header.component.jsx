@@ -10,6 +10,7 @@ const Header = ( {currentUser}) => (
     <Link to="/" className="logo-container">
       <Logo className="logo" />
     </Link>
+    
     <div className="options">
       <Link className="option" to="/shop">
         SHOP
@@ -20,7 +21,7 @@ const Header = ( {currentUser}) => (
       {
           currentUser ?
           <div className="option" onClick={ () => auth.signOut() }>SIGN OUT</div> :
-          <Link to='/signin'>SIGN IN</Link>
+          <Link className="option" to='/signin'>SIGN IN</Link>
       }
     </div>
   </div>
