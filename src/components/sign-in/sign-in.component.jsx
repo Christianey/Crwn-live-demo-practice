@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import { signInWithGoogle } from '../../firebase/firebase.utils'
+import { auth, signInWithGoogle } from '../../firebase/firebase.utils'
 
 import './sign-in.styles.scss';
 import FormInput from '../form-input/form-input.component';
@@ -16,10 +16,22 @@ class SignIn extends Component {
         }
     } 
 
-    handleSubmit = e => {
-        e.preventDefault();
+    handleSubmit = async event => {
+        event.preventDefault();
         
-        console.log('working?')
+        const { email, password } = this.state;
+
+        try {
+          await auth.signInWithEmailAndPassword(email, password); 
+
+          this.setState({
+            email: '',
+            password: ''
+          })
+        } catch(error) {
+          console.log(error);
+        }
+
         this.setState({
             password: '',
             email: ''
@@ -50,7 +62,7 @@ class SignIn extends Component {
               <FormInput
                 type="email"
                 name="email"
-                value={this.state.email}
+                value={this.state.password}
                 handleChange={this.handleChange}
                 label="email"
                 required
