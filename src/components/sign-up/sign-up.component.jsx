@@ -40,6 +40,7 @@ class SignUp extends Component {
                 password: '',
                 confirmPassword: ''
             })
+
         } catch(error) {
             const errorCode = error.code;
             const errorMessage = error.message;
@@ -54,7 +55,7 @@ class SignUp extends Component {
     } 
 
     handleChange = event => {
-        const {name, value} = event;
+        const {name, value} = event.target;
 
         this.setState({[name]: value})
     }
