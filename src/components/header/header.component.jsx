@@ -8,7 +8,6 @@ import { ReactComponent as Logo } from "../../assets/crown.svg";
 import { auth } from "../../firebase/firebase.utils";
 
 function Header({ currentUser }) {
-  console.log(currentUser)
   return (
     <div className="header">
       <Link to="/" className="logo-container">
@@ -37,7 +36,6 @@ function Header({ currentUser }) {
 }
 
 function mapStateToProps(state) {
-  console.log(state)
   return ({
     currentUser: state.user.currentUser,
   });
