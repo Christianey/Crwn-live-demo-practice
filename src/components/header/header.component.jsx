@@ -6,8 +6,10 @@ import { connect } from "react-redux";
 import "./header.styles.scss";
 import { ReactComponent as Logo } from "../../assets/crown.svg";
 import { auth } from "../../firebase/firebase.utils";
+import CartIcon from "../cart-icon/cart-icon.component";
+import CartDropdown from "../cart-dropdown/cart-dropdown.component";
 
-function Header({ currentUser }) {
+function Header({ currentUser, hidden }) {
   return (
     <div className="header">
       <Link to="/" className="logo-container">
@@ -23,21 +25,24 @@ function Header({ currentUser }) {
         </Link>
         {currentUser ? (
           <div className="option" onClick={() => auth.signOut()}>
-          SIGN OUT
+            SIGN OUT
           </div>
         ) : (
-            <Link className="option" to="/signin">
-          SIGN IN
-            </Link>
-          )}
+          <Link className="option" to="/signin">
+            SIGN IN
+          </Link>
+        )}
+        <CartIcon />
       </div>
+      {hidden ? null : <CartDropdown />}
     </div>
   );
 }
 
-function mapStateToProps(state) {
+function mapStateToProps( {user: { currentUser }, cart: { hidden}} ) {
   return ({
-    currentUser: state.user.currentUser,
+    currentUser,
+    hidden
   });
 }
 
