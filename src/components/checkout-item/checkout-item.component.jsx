@@ -12,11 +12,11 @@ const CheckoutItem = ({ item, clearItem, addItem, removeItem }) => {
         <div className="checkout-item">
             <div className="image-container"><img src={imageUrl} alt="" /></div>
             <span className="name">{name}</span>
-            <span className="quantity">
-                <span role='img' aria-label='testing' onClick={()=>removeItem(item )}>&#10094;</span>
-                {quantity}
-                <span role='img' aria-label='testing' onClick={()=>addItem(item)}>&#10095;</span>
-            </span>
+            <div className="quantity">
+                <div role='img' aria-label='testing' className='arrow' onClick={()=>removeItem(item )}>&#10094;</div>
+                <span className="value">{quantity}</span>
+                <span role='img' aria-label='testing' className='arrow' onClick={()=>addItem(item)}>&#10095;</span>
+            </div>
             <span className="price">${price}</span>
             <div className="remove-button" onClick={() => clearItem(item)}>
                 ✖
