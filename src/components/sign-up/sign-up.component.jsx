@@ -20,6 +20,8 @@ class SignUp extends Component {
     }
 
     handleSubmit = async event => {
+
+        console.log('Fired!')
         event.preventDefault();
         
         const { displayName, email, password, confirmPassword } = this.state;
@@ -29,8 +31,11 @@ class SignUp extends Component {
             return;
         }
 
+        // console.log(  displayName, email, password, confirmPassword)
+
         try {
             const { user } = await auth.createUserWithEmailAndPassword( email, password);
+
 
             createUserProfileDocument( user, {displayName});
 
@@ -100,8 +105,8 @@ class SignUp extends Component {
                         label='Confirm Password'
                         required
                     />
-                </form>
                 <CustomButton type='submit'>SIGN UP</CustomButton>
+                </form>
             </div>
         )
     }

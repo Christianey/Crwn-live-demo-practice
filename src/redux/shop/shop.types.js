@@ -1,5 +1,8 @@
 const ShopActionTypes = {
-    UPDATE_COLLECTIONS: 'UPDATE_COLLECTIONS'
+    fetchCollectionsAsync: 'fetchCollectionsAsync',
+    fetchCollectionsStart: 'fetchCollectionsStart',
+    fetchCollectionsSuccess: 'fetchCollectionsSuccess',
+    fetchCollectionsFailure: 'fetchCollectionsFailure',
 }
 
 export default ShopActionTypes;
